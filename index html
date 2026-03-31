@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>4M Dairy Farm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="font-family: Arial; text-align:center; background:#f5f5dc;">
+
+<h1>4M Dairy Farm 🧈</h1>
+<h2>Pure Buffalo Ghee</h2>
+
+<img src="ghee.jpg" width="200">
+
+<h3>500ml Ghee</h3>
+<p><b>Price: ₹250</b></p>
+
+<!-- CUSTOMER DETAILS -->
+<input type="text" id="name" placeholder="Enter your name"><br><br>
+<input type="text" id="address" placeholder="Enter your address"><br><br>
+
+<!-- PAY BUTTON -->
+<button onclick="payUPI()">Pay with UPI</button><br><br>
+
+<!-- AFTER PAYMENT -->
+<button onclick="sendOrder()">I Have Paid</button>
+
+<script>
+function payUPI() {
+
+  var upiLink = "upi://pay?pa=8341293319@upi&pn=4M Dairy Farm&am=250&cu=INR";
+  window.location.href = upiLink;
+}
+
+function sendOrder() {
+
+  var name = document.getElementById("name").value;
+  var address = document.getElementById("address").value;
+
+  if(name=="" || address==""){
+    alert("Fill details first!");
+    return;
+  }
+
+  var message = "New Order:%0A";
+  message += "Name: " + name + "%0A";
+  message += "Address: " + address + "%0A";
+  message += "Product: 500ml Ghee%0A";
+  message += "Payment: Done via UPI";
+
+  window.open("https://wa.me/918341293319?text=" + message);
+}
+</script>
+
+</body>
+</html>
